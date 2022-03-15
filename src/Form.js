@@ -2,35 +2,89 @@ import React, { Component } from 'react'
 
 class Form extends Component {
   state = {
-    email: '',
-    age: 20
+    firstName: '',
+    lastName: '',
+    age: 20,
+    address: '',
+    gender: "",
+    singing: false,
+    painting: false,
+    dancing: false,
+    dept: '',
+    agreement: false,
+    date: '',
+    submit:false
   }
-  handleEmail = (e) => {
-    this.setState({ email: e.target.value })
+  handleSubmit = () => {
+    this.setState({submit:true})
   }
-  handleAge = (e) => {
-    this.setState({age:e.target.value})
+  handleChange = (e) => {
+    if (e.target.type == 'checkbox') {
+      this.setState({[e.target.name]:e.target.checked})
+    } else {
+      
+      this.setState({[e.target.name]:e.target.value})
+    }
   }
   render() {
     return (
-      <div>
-        <h3>Registration Form</h3>
-        <label>Email</label>
-        <input
-          type='text'
-          value={this.state.email}
-          onChange={this.handleEmail}
-        
-        /><br />
-        <label>Age</label>
-        <input
-          type='number'
-          value={this.state.age}
-          onChange={this.handleAge}
-        />
+      <div> Registration Form
+        <div>
+          {!this.state.submit && (
+            <div>
+              <label>FirstName</label>
+              <input type='text' name='firstName' onChange={this.handleChange} value={this.state.firstName} /><br />
+              <label>LastName</label>
+              <input type='text' name='lastName' onChange={this.handleChange} value={this.state.lastName} />
+              <br /><label>Date of Birth</label>
+              <input type='date' value={this.state.date} onChange={this.handleChange} name='date' />
+              <br />
+              <label>Age</label>
+              <input type='number' name='age' value={this.state.age} onChange={this.handleChange} /><br />
+              <textarea name='address' value={this.state.address} onChange={this.handleChange} placeholder=' Type your address' />
 
-        <h2>My email is {this.state.email} My age is {this.state.age}</h2>
-      </div>
+              {/* select input?           */}
+              <br />
+
+              <label>Department</label>
+              <select name='dept' value={this.state.dept} onChange={this.handleChange}>
+                <option value="">Select your department</option>
+                <option value='cse'>Computer Science</option>
+                <option value='chemistry'>Chemistry</option>
+                <option value='physics'>Physics</option>
+              </select>
+              <br />
+              <label>Gender</label>
+              <input type='radio' name="gender" value="Male"
+                onChange={this.handleChange} />
+              <label>Male</label>
+              <input type='radio' name='gender' value="Female" onChange={this.handleChange} />
+              <label>Female</label>
+              <input type='radio' name="gender" value="Others" onChange={this.handleChange} /><label>Others</label>
+              <br />
+              <label>Hobbies</label>
+              <input type="checkbox" checked={this.state.singing} name="singing" onChange={this.handleChange} /> Singing
+              <input type="checkbox" checked={this.state.painting} name='painting' onChange={this.handleChange} /> Painting
+              <input type="checkbox" checked={this.state.dancing} name='dancing' onChange={this.handleChange} /> Dancing
+          
+              <button className='btn btn-outline-primary' onClick={this.handleSubmit}>Submit</button>
+
+            </div>)}
+
+
+          {this.state.submit && (
+            <div>
+              <div>Name {this.state.firstName}{this.state.lastName}</div>
+              <div>Born on {this.state.date}</div>
+              <div>Your are {this.state.age} years old</div>
+              <div>Your address is {this.state.address}</div>
+              <div>You are studying in {this.state.dept}</div>
+              <div>Gender selected is {this.state.gender}</div>
+              <div>Your hobbies are {this.state.dancing && 'Dancing'} {this.state.painting && 'Painting'}{this.state.singing && "Singing"}</div>
+            </div>)}
+
+
+      </div></div>
     )
   }
 }
