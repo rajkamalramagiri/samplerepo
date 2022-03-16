@@ -13,10 +13,20 @@ class Form extends Component {
     dept: '',
     agreement: false,
     date: '',
-    submit:false
+    submit: false,
+    password: '',
+    confirmPassword:'',
   }
   handleSubmit = () => {
-    this.setState({submit:true})
+    if (!this.state.firstName) {
+      alert('firstname is mandatory')
+      return
+    }
+    
+    if((this.state.password) && (this.state.password ===this.state.confirmPassword))
+      this.setState({ submit: true })
+    else
+      alert('Password should match')
   }
   handleChange = (e) => {
     if (e.target.type == 'checkbox') {
@@ -65,8 +75,13 @@ class Form extends Component {
               <label>Hobbies</label>
               <input type="checkbox" checked={this.state.singing} name="singing" onChange={this.handleChange} /> Singing
               <input type="checkbox" checked={this.state.painting} name='painting' onChange={this.handleChange} /> Painting
-              <input type="checkbox" checked={this.state.dancing} name='dancing' onChange={this.handleChange} /> Dancing
-          
+              <input type="checkbox" checked={this.state.dancing} name='dancing' onChange={this.handleChange} /> Dancing<br />
+              <label>Password</label>
+              <input name='password' value={this.state.password} onChange={this.handleChange} type='password' />
+              <label>Confirm password</label>
+              <input value={this.state.confirmPassword} name='confirmPassword' onChange={this.handleChange} type='password' />
+              {this.state.password}
+              {this.state.confirmPassword}
               <button className='btn btn-outline-primary' onClick={this.handleSubmit}>Submit</button>
 
             </div>)}
