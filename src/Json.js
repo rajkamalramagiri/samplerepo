@@ -1,38 +1,11 @@
 import React, { Component } from 'react'
-
+// import todos from './data'
+import { todos } from './data'
+import {reviews} from './data'
 class Json extends Component {
     state = {
-         users:[
-            {
-            "userId": 1,
-            "id": 1,
-            "title": "Breakfast",
-            "completed": false
-            },
-            {
-            "userId": 1,
-            "id": 2,
-            "title": "Dinner",
-            "completed": false
-            },
-            {
-            "userId": 1,
-            "id": 3,
-            "title": "Lunch",
-            "completed": true
-            },
-            {
-            "userId": 1,
-            "id": 4,
-            "title": "Brunch",
-            "completed": true
-            },
-            {
-            "userId": 1,
-            "id": 5,
-            "title": "Snacks",
-            "completed": false
-            }]
+      users:reviews
+      
      }
   render() {
     return (
