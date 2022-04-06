@@ -47,14 +47,21 @@ function Filter() {
         }
     ])
     const [dataRender, setRenderData] = useState(datas);
+    //moving dept to separate array
     const dept = datas.map(data => data.dept)
     console.log(dept);
+    // to find unique dept
     const uniqDept = [...new Set(dept)] // to extract unique values from array
+    // to all at the start of array
     uniqDept.unshift('All')
+
     console.log(uniqDept)
+
+    //to filter data based on the tab click and to save it within renderData
     const handleTab = (d) => {
+        // to check all is clicked 
         if (d === 'All') {
-            setRenderData(datas)
+            setRenderData(datas) //copying unfiltered data to renderData
             return
         }
         console.log('click', d)
