@@ -1,11 +1,11 @@
 import React from 'react'
-import Filter from './Filter'
+import FetchJson from './FetchJson'
 
 function App() {
   
   return (
     <div>
-      <Filter/>
+      <FetchJson/>
 
     </div>
   )
