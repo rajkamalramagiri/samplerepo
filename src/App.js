@@ -1,12 +1,12 @@
 import React from 'react'
-import FetchJson from './FetchJson'
+import FetchAsyncAwait from './FetchAsyncAwait'
+import NextPrev from './NextPrev'
 
 function App() {
   
   return (
     <div>
-      <FetchJson/>
-
+      <FetchAsyncAwait />
     </div>
   )
 }
