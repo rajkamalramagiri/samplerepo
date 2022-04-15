@@ -1,5 +1,13 @@
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
+let x = [4, 3, 9, 8]
+// x.push(15)
 
-console.log(getRandomInt(5))
+// immutablity
+
+x = [...x, 15]
+
+console.log(x)
+
+let student = [{ name: 'raj', dept: 'IT' }, { name: 'KAMAL', dept: 'CSE' }, { name: 'MANI', dept: 'IT' }];
+student = [...student, { name: 'vijay', dept: 'cse' }]
+
+console.log(student)
