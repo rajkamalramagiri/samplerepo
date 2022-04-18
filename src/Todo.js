@@ -1,46 +1,37 @@
-import React, { useState, useId } from 'react'
+import React, { useState, useId, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios'
 function Todo() {
     const [input, setInput] = useState('')
-    const [todoList, setTodoList] = useState([
-        {
-            id: 1,
-            task: 'To train react'
-        },
-        {
-            id: 2,
-            task: 'To Correct assignments'
-        },
+    const [todoList, setTodoList] = useState([])
 
-        {
-            id: 3,
-            task: 'To review code'
-        },
+    const fetchData = async () => {
+        const response = await axios.get('http://localhost:3000/todoList')
+        setTodoList(response.data)
+    }
 
-        {
-            id: 4,
-            task: 'To select students to projects'
-        },
-    ])
+    useEffect(() => fetchData(), [])
 
     const handleChange = (e) => {
         setInput(e.target.value);
     }
 
-    const addTodo = () => {
-        setTodoList([...todoList, { id: uuidv4(), task: input }])
+    const addTodo = async () => {
+        await axios.post('http://localhost:3000/todoList', { "id": uuidv4(), "task": input })
+        fetchData();
         setInput('')
 
     }
-    const hanldeDelete = (id) => {
-        const fileteredTodo = todoList.filter(todo => todo.id !== id);
-        setTodoList(fileteredTodo)
+    const hanldeDelete = async (id) => {
+        await axios.delete(`http://localhost:3000/todoList/${id}`);
+        fetchData();
+
     }
-    const hanldeUpdate = (index) => {
-        const updatedTask = prompt('Update your task', todoList[index].task)
-        let copiedTodoList = [...todoList];
-        copiedTodoList[index].task = updatedTask;
-        setTodoList(copiedTodoList)
+    const hanldeUpdate = async (index) => {
+        const updatedTask = prompt('Update your task', todoList[index].task);
+        await axios.put(`http://localhost:3000/todoList/${todoList[index].id}`, { "id": todoList[index].id, "task": updatedTask })
+        fetchData();
+
     }
     return (
         <div><h1> Todo Application </h1>
