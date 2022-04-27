@@ -1,13 +1,8 @@
-let x = [4, 3, 9, 8]
-// x.push(15)
+let student = {
+    name: 'raj',
+    depta: 'it',
+    age: 31
+}
 
-// immutablity
-
-x = [...x, 15]
-
-console.log(x)
-
-let student = [{ name: 'raj', dept: 'IT' }, { name: 'KAMAL', dept: 'CSE' }, { name: 'MANI', dept: 'IT' }];
-student = [...student, { name: 'vijay', dept: 'cse' }]
-
+student = { ...student, age: student.age + 1 }
 console.log(student)

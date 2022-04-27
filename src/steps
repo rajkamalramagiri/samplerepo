@@ -19,6 +19,7 @@
 4. connect your component (UI) with store
     1. import connect from 'react-redux'
         import { connect } from 'react-redux'
+import { type } from '@testing-library/user-event/dist/type'
     2. use mapStateToProps function with state as an argument and return necessary values
                 const mapStateToProps = (state) => {
                     return {
@@ -27,6 +28,12 @@
                     }
     3. call the state value with props
     4. connect your component with mapStateToProps
+
+5. component to  update any value in the state
+1. Dispatch an action
+2. action is a function it returns object { type, payload }
+3. action will trigger reducer
+4. reducer will change the value.
 
 
 

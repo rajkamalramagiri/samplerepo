@@ -1,11 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import decrementCount from './redux/decrementCount'
+import incrementCount from './redux/incrementCount'
 
-function ReuduxChild(props) {
+function ReuduxChild({ count, name, incrementCount, decrementCount }) {
     return (
         <div>
-            <div>ReuduxChild {props.count}</div>
-            <div>Nme is {props.name}</div>
+            <div>ReuduxChild {count}</div>
+            <div>Name is {name}</div>
+            <button onClick={incrementCount}>Increment</button>
+            <button onClick={decrementCount}>Decrement</button>
         </div>
 
     )
@@ -21,5 +25,13 @@ const mapStateToProps = (state) => {
 
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        incrementCount: () => dispatch(incrementCount()),
+        decrementCount: () => dispatch(decrementCount())
+    }
+
+}
+
 //connecting component with state
-export default connect(mapStateToProps)(ReuduxChild);
+export default connect(mapStateToProps, mapDispatchToProps)(ReuduxChild);
