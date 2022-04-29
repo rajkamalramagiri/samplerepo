@@ -1,8 +1,10 @@
 import { INCREMENT } from "./constants";
 
-const incrementCount = () => {
+const incrementCount = (number) => {
+    console.log(number)
     return {
-        type: INCREMENT
+        type: INCREMENT,
+        payload: number
     }
 }
 

@@ -7,7 +7,7 @@ function ReduxChild2({ count }) {
 }
 const mapStateToProps = (state) => {
     return {
-        count: state.count
+        count: state.count.count
     }
 }
 

@@ -4,16 +4,15 @@ import { INCREMENT, DECREMENT } from "./constants";
 
 const initialState = {
     count: 3,
-    name: 'ravi'
 }
 
 
 //creating reducer
 
-const reducer = (state = initialState, action) => {
+const countReducer = (state = initialState, action) => {
     switch (action.type) {
         case INCREMENT:
-            return { ...state, count: state.count + 1 }
+            return { ...state, count: state.count + Number(action.payload) }
         case DECREMENT:
             return { ...state, count: state.count - 1 }
         default:
@@ -21,4 +20,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export default countReducer;

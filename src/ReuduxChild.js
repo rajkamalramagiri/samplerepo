@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import decrementCount from './redux/decrementCount'
 import incrementCount from './redux/incrementCount'
 
 function ReuduxChild({ count, name, incrementCount, decrementCount }) {
+    const [number, setNumber] = useState(0)
     return (
         <div>
             <div>ReuduxChild {count}</div>
+            <input type='numbet' value={number} onChange={(e) => setNumber(e.target.value)} />
             <div>Name is {name}</div>
-            <button onClick={incrementCount}>Increment</button>
+            <button onClick={() => incrementCount(number)}>Increment</button>
             <button onClick={decrementCount}>Decrement</button>
         </div>
 
@@ -19,15 +21,15 @@ function ReuduxChild({ count, name, incrementCount, decrementCount }) {
 
 const mapStateToProps = (state) => {
     return {
-        count: state.count,
-        name: state.name
+        count: state.count.count,
+        name: state.name.name
     }
 
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        incrementCount: () => dispatch(incrementCount()),
+        incrementCount: (num) => dispatch(incrementCount(num)),
         decrementCount: () => dispatch(decrementCount())
     }
 
