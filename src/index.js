@@ -2,11 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+import Example from './Example';
+import ListComponent from './Examp';
+import Navbar from './Navbar';
+import Parent from './Parent';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    {/* <Example/> */}
+    {/* <ListComponent /> */}
+    {/* <Navbar /> */}
+    <Parent/>
   </React.StrictMode>,
   document.getElementById('root')
 );
